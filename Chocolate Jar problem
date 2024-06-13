@@ -1,0 +1,32 @@
+'''Chocolate jar
+You are given an integer array of size N, representing jars of chocolates. Three students A, B, 
+and C respectively, will pick chocolates one by one from each chocolate jar, till the jar is 
+empty, and then repeat the same with the rest of the jars. Your task is to fine and return an 
+integer value representing the total number of chocolates that student A will have, after all 
+the chocolates have been picked from all the jars. 
+Note: Once a jar is done A will start taking the chocolates from the new jar. '''
+
+
+def chocolates_for_A(jars, N):
+    chocolates_A = 0
+    
+    for jar in jars:
+        chocolates_left = jar
+        turn = 0  # 0 for A, 1 for B, 2 for C
+        
+        while chocolates_left > 0:
+            if turn == 0:  # It's A's turn
+                chocolates_A += 1
+            
+            # Reduce the chocolate count as a chocolate is picked by one of the students
+            chocolates_left -= 1
+            
+            # Move to the next student's turn
+            turn = (turn + 1) % 3
+    
+    return chocolates_A
+
+# Example Usage
+jars = [5, 3, 7]
+N = len(jars)
+print(chocolates_for_A(jars, N))  # Output will be the total chocolates picked by A
