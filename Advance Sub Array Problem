@@ -1,0 +1,34 @@
+***advance sub array problem  
+You are competing in a basketball contest. In this contest the score for each successful shot 
+depends on both the distance from the basket and the player's position. The ball is shot N 
+times, successfully. You are given an array A containing the distance of a player from basket 
+for N shots. The index of array represents the position of the player. Score is calculated by 
+multiplying the position with the distance from the basket. 
+Your task is to find and return an integer value, representing the maximum possible score 
+you can achieve by choosing a contiguous subarray of size K from the given array. 
+Note:
+* A subarray is a contiguous part of array. 
+* Assume 1 based indexing. 
+* The array contains both negative and positive values. 
+* Assume the player is standing on a cartesian plane.***
+
+def max_score_subarray(arr, K):
+    max_score = float('-inf')  # Initialize to negative infinity
+    n = len(arr)
+    
+    # Iterate over all possible subarrays of size K
+    for i in range(n - K + 1):
+        current_score = 0
+        for j in range(K):
+            current_score += j * arr[i + j]
+        max_score = max(max_score, current_score)
+    
+    return max_score
+
+# Given array and size of subarray K
+A = [4, 3, 2, 7, 1, 9]
+K = 3
+
+# Calculate the maximum possible score
+max_possible_score = max_score_subarray(A, K)
+max_possible_score
