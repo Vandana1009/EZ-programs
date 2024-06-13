@@ -1,0 +1,19 @@
+'''You have been given the task of making the content on a social media platform more userfriendly. Your task is to find and return an integer value representing the count of the 
+number of spaces in a given string S.'''
+
+def count_spaces(S):
+    # Initialize a counter for spaces
+    space_count = 0
+    
+    # Iterate over each character in the string
+    for char in S:
+        # If the character is a space, increment the counter
+        if char == ' ':
+            space_count += 1
+    
+    return space_count
+
+# Sample input
+input_string = "Hello world, how are you?"
+# Expected output: 4
+print(count_spaces(input_string))
